@@ -69,6 +69,7 @@ class GalleryImage(models.Model):
 
 
 class Otzyv(models.Model):
+    photo = models.ImageField(upload_to='uploads/images/', null=True)
     author = models.CharField(max_length=100)
     content = models.TextField()
     created_at = models.DateField(auto_created=True)
