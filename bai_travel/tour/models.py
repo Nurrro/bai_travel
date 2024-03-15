@@ -27,6 +27,7 @@ class Tours(models.Model):
             price = (self.price_of_tour/100)*self.discount
             return self.price_of_tour-price
         return self.price_of_tour
+
     @property
     def photo(self):
         return self.photos.first().photo

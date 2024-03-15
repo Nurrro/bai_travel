@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+}
+
+.client-form__button {
+  cursor: pointer;
+  border-radius: 24px;
+  padding: 10px 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.client-form {
+  display: none;
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.233);
+}
+.client-form.active {
+  display: block;
+}
+.client-form__container {
+  display: flex;
+  flex-direction: column;
+  width: 530px;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 24px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.client-form__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  padding: 20px;
+}
+.client-form__close::after, .client-form__close::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 1px;
+  width: 16px;
+  background-color: #8D8A8A;
+}
+.client-form__close::after {
+  transform: rotate(45deg);
+}
+.client-form__close::before {
+  transform: rotate(-45deg);
+}
+.client-form__title {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.client-form__line {
+  margin-bottom: 35px;
+}
+.client-form__label {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.client-form__input {
+  margin-bottom: 35px;
+  font-size: 16px;
+}
+.client-form__button {
+  background-color: #014cbd;
+  color: #fff;
+  font-size: 16px;
+  display: inline;
+  margin: 0 auto 15px;
+  padding: 10px 60px;
+}

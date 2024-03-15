@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+}
+
+.about-us-page {
+  background-color: #fff;
+  border-radius: 24px;
+  padding: 25px 30px 20px;
+  margin: 10px 0;
+}
+.about-us-page__sub-title {
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 11px;
+}
+.about-us-page__title {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+.about-us-page__text {
+  color: #2b2b2b;
+  line-height: 1.5em;
+  margin-bottom: 30px;
+}
+.about-us-page__img {
+  margin-bottom: 20px;
+  border-radius: 12px;
+}
+.about-us-page__btn {
+  margin: 15px 0 10px;
+  background-color: #F68712;
+  padding: 10px 40px;
+}

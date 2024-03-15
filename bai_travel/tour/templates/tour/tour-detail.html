@@ -1,118 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="shortcut icon" href="img/icons/logo.png">
-    <title>Bai travel</title>
-</head>
+{% extends 'tour/base.html' %}
+{%  load static %}
+{% block content %}
+
 <body id="body">
-    <header class="header">
-        <div class="container">
-            <div class="header__body">
-                <a href="index.html" class="header__logo">
-                    <img src="img/лого.png" alt="">
-                </a>
-                <div class="header__burger">
-                    <span></span>
-                </div>
-                <div class="header__menu">
-                    <ul class="header__list">
-                        <li class="header__link">
-                            <a href="index.html" class="header__link header__link active">
-                                ГЛАВНАЯ
-                            </a>
-                        </li>
-                        <li class="header__link">
-                            <a href="#" class="">
-                                ТУРЫ
-                            </a>
-                        </li>
-                        <li class="header__link">
-                            <a href="#" class="">
-                                БЛОГ
-                            </a>
-                        </li>
-                        <li class="header__link">
-                            <a href="#" class="">
-                                О НАС
-                            </a>
-                        </li>
-                        <li class="header__link header__btn">
-                            <a href="#" class="">
-                                Войти
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
-
-
-
 <div class="container">
-    <!-- active -->
-    <div id="client-form" class="client-form">
-        <form action="" class="client-form__container">
-            <div class="client-form__close"></div>
+    <div id="client-form" class="client-form" style="display: none;">
+        <form action="" id="bidsForm2" class="client-form__container" method="POST" >
+        {% csrf_token %}
+            <input type="hidden" name="tour_id" value="{{ tour.id }}">
+            <div class="client-form__close" id="closeModal"></div>
             <div class="client-form__title">Заполните анкету</div>
             <div class="client-form__line line"></div>
-            <label for="" class="client-form__label">Введите ФИО</label>
-            <input type="text" class="client-form__input input">
-            <label for="" class="client-form__label">Введите вашу электронную почту</label>
-            <input type="text" class="client-form__input input">
-            <label for="" class="client-form__label">Введите номер телефона</label>
-            <input type="text" class="client-form__input input">
+            <label  class="client-form__label">Введите ФИО</label>
+            <input name="full_name" type="text" class="client-form__input input">
+            <label   class="client-form__label">Введите вашу электронную почту</label>
+            <input name="email" type="email" class="client-form__input input">
+            <label  class="client-form__label">Введите номер телефона</label>
+            <input name="phone_number" type="text" class="client-form__input input">
             <button id="client-form__button" class="client-form__button">Отправить</button>
         </form>
     </div>
 
-<div class="tour__container">
+<div class="tour__container">   
 
     <div class="routs">
-        <a href="#" class="routs__item">
+        <a href="{% url 'main' %}" class="routs__item">
             Главная 
         </a>
-        <a href="#" class="routs__item">
+        <a href="{% url 'tours' %}" class="routs__item">
             Туры
         </a>
         <a href="#" class="routs__item">
-             Grand Park Lara
+            {{tour.name}}
         </a> 
     </div>
-
-    <div class="tour__name">Grand Park Lara</div>
+    <div id="{{tour.id}}" class="tour__name">{{ tour.name}}</div>
     <div class="tour__location">
         <span class="icon tour__icon">
-            <img src="img/icons/location.svg" >
+            <img src="{% static 'img/icons/location.svg' %}" >
         </span>
-        Турция, Анталья
+        {{tour.place}}
     </div>
     <div class="tour__body">
         <div class="tour__img-block">
             <div class="tour__main-img">
-                <img src="img/фото.jpg" alt="">
+                <img src="{{ tour.photo.url}}" alt="">
             </div>
             <div class="tour__sub-imgs">
+            {% for img in tour.photos.all %}
                 <div class="tour__inner-img">
                     <div class="tour__sub-img">
-                    <img src="img/фото.jpg" alt="">
+                    <img src="{{ img.photo.url}}" alt="">
                     </div>
                 </div>
-                <div class="tour__inner-img">
-                    <div class="tour__sub-img">
-                        <img src="img/фото.jpg" alt="">
-                    </div>
-                </div>
-                <div class="tour__inner-img">
-                    <div class="tour__sub-img">
-                        <img src="img/фото.jpg" alt="">
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+
+            </div>  
         </div>
 
         <div class="tour__info-block">
@@ -120,36 +63,36 @@
             <div class="tour__schedule">
                 <div class="tour__schedule-item">
                     <div class="tour__schedule-title">Туда</div>
-                    <div class="tour__schedule-date">1 февр. 2024, чт</div>
+                    <div class="tour__schedule-date"> {{tour.data_provedenya_start}} </div>
                 </div>
                 <div class="tour__schedule-item">
                     <div class="tour__schedule-title">Обратно</div>
-                    <div class="tour__schedule-date">6 февр. 2024, вт</div>
+                    <div class="tour__schedule-date">{{tour.data_provedenya_end}}</div>
                 </div>
             </div>
             <div class="tour__info-item">
                 <div class="tour__info-secondary-text">
                     <span class="icon tour__icon">
-                        <img src="img/icons/calendar.svg">
+                        <img src="{% static 'img/icons/calendar.svg' %}">
                     </span>
                     Длительность
                 </div>
                 <div class="tour__info-primary-text">
-                    5 дней
+                    {{duration}}
                 </div>
             </div>
             <div class="tour__info-item">
                 <div class="tour__info-secondary-text">
                     <span class="icon tour__icon">
-                        <img src="img/icons/2users.svg">
+                        <img src="{%static 'img/icons/2users.svg' %}">
                     </span>
                     Количество человек
                 </div>
                 <div class="tour__info-primary-text">
-                    <input type="number" placeholder="1" class="tour__input">
+                    <input type="number" id="number_of_people" name="number_of_people" value="1" class="tour__input">
                 </div>
             </div>
-            <div class="tour__notice-text">осталось 6 человек</div>         
+            <div class="tour__notice-text">осталось {{tour.total_people}} человек</div>         
             <div class="tour__line line"></div>
     
             <div class="tour__info-item">
@@ -157,7 +100,7 @@
                     Стоимость тура
                 </div>
                 <div class="tour__info-primary-text">
-                    3000 сом
+                    {{tour.price_of_tour}}
                 </div>
             </div>
             <div class="tour__info-item">
@@ -165,12 +108,12 @@
                     Скидка
                 </div>
                 <div class="tour__info-secondary-text">
-                    -800 сом
+                    {{tour.discount}}%
                 </div>
             </div>
             <div class="tour__info-item">
                 <div class="tour__total-text">Итого</div>
-                <div class="tour__total-price">2200 сом</div>
+                <div class="tour__total-price">{{tour.discount_price}} сом</div>
             </div>
             <div class="tour__info-item">
                 <div class="tour__info-secondary-text">
@@ -180,7 +123,7 @@
                     800 сом/месяц
                 </div>
             </div>
-            <button type="button" class="tour__btn">Получить бесплатную консультацию</button>
+            <button id="consultation-btn" class="tour__btn">Получить бесплатную консультацию</button>
         </div>
 
          <div class="tour__description">
@@ -189,23 +132,18 @@
             <div class="tour__description-sub-title">День1</div>
             <div class="tour__description-sub-date">Бишкек — Кызарт – Килемче</div>
             <div class="tour__description-sub-text">
-                Бишкек – Кызарт на такси или мы можем вам организовать трансфер для вас индивидуально.
-                Обед в селе Кызарт . После обеда выезд на Килемче на лошадях. По дороге будет виден красивый пейзаж наших красивых гор. По прибытию у вас будет свободное время для прогулки по местностям и посмотреть жизнь местных кочевников. Килемче находится на высоте 2500 м над уровнем моря. Ужин и ночлег в юртах.
+                {{tour.description}}
             </div>
             <div class="tour__description-sub-text">
-                Бишкек – Кызарт на такси или мы можем вам организовать трансфер для вас индивидуально.
-                Обед в селе Кызарт . После обеда выезд на Килемче на лошадях. По дороге будет виден красивый пейзаж наших красивых гор. По прибытию у вас будет свободное время для прогулки по местностям и посмотреть жизнь местных кочевников. Килемче находится на высоте 2500 м над уровнем моря. Ужин и ночлег в юртах.
+                {{tour.description}}
+
             </div>
         </div>
 
     </div>
     
+</div>    
 </div>
-
-
-    
-</div>
-
-<script src="js/style.js"></script>
 </body>
-</html>
+
+{% endblock content %}

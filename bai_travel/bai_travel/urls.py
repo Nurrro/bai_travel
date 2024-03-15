@@ -19,8 +19,12 @@ router.register(r'carusel', CaruselViewSet, basename='carusel')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include("tour.urls")),
     path('api/v1/', include(router.urls)),
 
 ]
+
+
+
 if settings.DEBUG:
   urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

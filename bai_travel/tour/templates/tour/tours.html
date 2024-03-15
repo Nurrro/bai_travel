@@ -1,154 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="shortcut icon" href="img/icons/logo.png">
-    <title>Bai travel</title>
-</head>
-<body id="body">
+{% extends 'tour/base.html' %}
+{%  load static %}
+{% block content %}
 
+<body id="body">
 <div class="container">
     <div class="title2">
         <span>Все туры</span>
     </div>
-
     <ul class="tour-cards__container">
+        {% for tour in tour %}
         <li class="tour-cards__item">
             <div class="tour-cards__inner-item">
-                <a href="tour-detail.html" class="tour-cards__img">
-                    <img src="img/фото.jpg" alt="">
+               <div class="tour-cards__img"> <a href="{% url 'tour_detail' id=tour.id %}"></div>
+                    <img src="{{tour.photo.url}}" alt="">
                 </a>  
                 <div class="tour-cards__block">
-                    <div class="tour-cards__name">Лутос Маре</div>
-                    <div class="tour-cards__place">Греция, Херсонисос</div>
-                    <div class="tour-cards__date">13 июня – 20 июня</div>
+                    <div class="tour-cards__name">{{ tour.name }}</div>
+                    <div class="tour-cards__place">{{ tour.place }}</div>
+                    <span class="tour-cards__date">{{ tour.data_provedenya_start }}</span> - 
+                    <span class="tour-cards__date">{{ tour.data_provedenya_end }}</span>
                     <div class="tour-cards__price">
-                        <span class="tour_cards__new-price">759$</span>
-                        <span class="tour_cards__old-price">1200</span>
+                        <span class="tour_cards__new-price">{{ tour.price_of_tour }} сом</span>
+                        <span class="tour_cards__old-price">{{ tour.price_of_tour }}</span>
                     </div>
-                    <a href="tour-detail.html" class="tour-cards__btn">Подробнее</a>
+                    <a href="{% url 'tour_detail' id=tour.id %}" class="tour-cards__btn">Подробнее</a>
                 </div>   
-                <div class="tour_cards__sale">-7%</div>        
-            </div>
+             <div class="tour_cards__sale">{{ tour.discount }}%</div>  
         </li>
-        <li class="tour-cards__item">
-            <div class="tour-cards__inner-item">
-                <a href="tour-detail.html" class="tour-cards__img">
-                    <img src="img/фото.jpg" alt="">
-                </a>  
-                <div class="tour-cards__block">
-                    <div class="tour-cards__name">Lyttos Mare</div>
-                    <div class="tour-cards__place">Греция, Херсонисос</div>
-                    <div class="tour-cards__date">13 июня – 20 июня</div>
-                    <div class="tour-cards__price">
-                        <span class="tour_cards__new-price">759$</span>
-                        <span class="tour_cards__old-price">1200</span>
-                    </div>
-                    <a href="tour-detail.html" class="tour-cards__btn">Подробнее</a>
-                </div>   
-                <div class="tour_cards__sale">-7%</div>        
-            </div>
-        </li>
-        <li class="tour-cards__item">
-            <div class="tour-cards__inner-item">
-                <a href="tour-detail.html" class="tour-cards__img">
-                    <img src="img/фото.jpg" alt="">
-                </a>  
-                <div class="tour-cards__block">
-                    <div class="tour-cards__name">Lyttos Mare</div>
-                    <div class="tour-cards__place">Греция, Херсонисос</div>
-                    <div class="tour-cards__date">13 июня – 20 июня</div>
-                    <div class="tour-cards__price">
-                        <span class="tour_cards__new-price">759$</span>
-                        <span class="tour_cards__old-price">1200</span>
-                    </div>
-                    <a href="tour-detail.html" class="tour-cards__btn">Подробнее</a>
-                </div>   
-                <div class="tour_cards__sale">-7%</div>        
-            </div>
-        </li>
-        <li class="tour-cards__item">
-            <div class="tour-cards__inner-item">
-                <a href="tour-detail.html" class="tour-cards__img">
-                    <img src="img/фото.jpg" alt="">
-                </a>  
-                <div class="tour-cards__block">
-                    <div class="tour-cards__name">Lyttos Mare</div>
-                    <div class="tour-cards__place">Греция, Херсонисос</div>
-                    <div class="tour-cards__date">13 июня – 20 июня</div>
-                    <div class="tour-cards__price">
-                        <span class="tour_cards__new-price">759$</span>
-                        <span class="tour_cards__old-price">1200</span>
-                    </div>
-                    <a href="tour-detail.html" class="tour-cards__btn">Подробнее</a>
-                </div>   
-                <div class="tour_cards__sale">-7%</div>        
-            </div>
-        </li>
-        <li class="tour-cards__item">
-            <div class="tour-cards__inner-item">
-                <a href="tour-detail.html" class="tour-cards__img">
-                    <img src="img/фото.jpg" alt="">
-                </a>  
-                <div class="tour-cards__block">
-                    <div class="tour-cards__name">Lyttos Mare</div>
-                    <div class="tour-cards__place">Греция, Херсонисос</div>
-                    <div class="tour-cards__date">13 июня – 20 июня</div>
-                    <div class="tour-cards__price">
-                        <span class="tour_cards__new-price">759$</span>
-                        <span class="tour_cards__old-price">1200</span>
-                    </div>
-                    <a href="tour-detail.html" class="tour-cards__btn">Подробнее</a>
-                </div>   
-                <div class="tour_cards__sale">-7%</div>        
-            </div>
-        </li>
-        <li class="tour-cards__item">
-            <div class="tour-cards__inner-item">
-                <a href="tour-detail.html" class="tour-cards__img">
-                    <img src="img/фото.jpg" alt="">
-                </a>  
-                <div class="tour-cards__block">
-                    <div class="tour-cards__name">Lyttos Mare</div>
-                    <div class="tour-cards__place">Греция, Херсонисос</div>
-                    <div class="tour-cards__date">13 июня – 20 июня</div>
-                    <div class="tour-cards__price">
-                        <span class="tour_cards__new-price">759$</span>
-                        <span class="tour_cards__old-price">1200</span>
-                    </div>
-                    <a href="tour-detail.html" class="tour-cards__btn">Подробнее</a>
-                </div>   
-                <div class="tour_cards__sale">-7%</div>        
-            </div>
-        </li>
-        <li class="tour-cards__item">
-            <div class="tour-cards__inner-item">
-                <a href="tour-detail.html" class="tour-cards__img">
-                    <img src="img/фото.jpg" alt="">
-                </a>  
-                <div class="tour-cards__block">
-                    <div class="tour-cards__name">Lyttos Mare</div>
-                    <div class="tour-cards__place">Греция, Херсонисос</div>
-                    <div class="tour-cards__date">13 июня – 20 июня</div>
-                    <div class="tour-cards__price">
-                        <span class="tour_cards__new-price">759$</span>
-                        <span class="tour_cards__old-price">1200</span>
-                    </div>
-                    <a href="tour-detail.html" class="tour-cards__btn">Подробнее</a>
-                </div>   
-                <div class="tour_cards__sale">-7%</div>        
-            </div>
-        </li>
-    </ul> 
-
-    
-</div>
-
-
-    
-</div>
+        {% endfor %}
+    </ul>   
+</div>       
 </body>
-</html>
+{% endblock content %}
