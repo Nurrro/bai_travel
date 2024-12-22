@@ -1,0 +1,27 @@
+{% extends 'tour/base.html' %}
+{%  load static %}
+{% block content %}
+
+<body id="body">
+
+    <div class="container">
+        <div class="title2">
+            <span>Все фото</span>
+        </div>
+    
+        <div class="gallery__container">
+            {% for i in photos %}
+            <div class="gallery__item">
+                <div class="gallery__inner-item">
+                    <a href="{{ i.photo.url }}" data-lightbox="gallery">
+                        <img src="{{ i.photo.url }}" alt="">
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>  
+    </div>
+    
+</body>
+{% endblock content %}
+</html>

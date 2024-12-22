@@ -1,0 +1,23 @@
+.gallery__container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 0 -10px 10px;
+}
+
+.gallery__item {
+  padding: 0 10px 20px;
+  width: 20%;
+}
+
+.gallery__inner-item {
+  height: 11vw;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery__inner-item img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}

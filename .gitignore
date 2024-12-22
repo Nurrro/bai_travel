@@ -1,1 +1,3 @@
-/env
+venv
+mediafiles
+db.sqlite3
