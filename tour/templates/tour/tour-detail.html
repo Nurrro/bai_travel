@@ -1,0 +1,166 @@
+{% extends 'tour/base.html' %}
+{%  load static %}
+{% block content %}
+
+
+<body id="body">
+<div class="container">
+   <div id="client-form" class="client-form" style="display: none;">
+        <form action="" id="bidsForm2" class="client-form__container" method="POST" >
+        {% csrf_token %}
+            <input type="hidden" name="tour_id" value="{{ tour.id }}">
+            <div class="client-form__close" id="closeModal"></div>
+            <div class="client-form__title">Заполните анкету</div>
+             <div class="client-form__line line"></div> 
+            <label  class="client-form__label">Введите ФИО</label>
+            <input name="full_name" type="text" class="client-form__input input">
+            <label  class="client-form__label">Введите номер телефона</label>
+            <input name="phone_number" type="text" class="client-form__input input">
+            <button id="client-form__button" class="client-form__button">Отправить</button>
+        </form> 
+    </div> 
+
+<div class="tour__container">   
+
+    <div class="routs">
+        <a href="{% url 'main' %}" class="routs__item">
+            Главная 
+        </a>
+        <a href="{% url 'tours' %}" class="routs__item">
+            Номера
+        </a>
+        <a href="#" class="routs__item">
+            {{tour.name}}
+        </a> 
+    </div>
+    <div id="{{tour.id}}" class="tour__name">{{ tour.name}}</div>
+    <div class="tour__body">
+        <div class="tour__img-block">
+            <div class="tour__main-img">
+                <a href="{{ tour.photo.url }}" data-lightbox="tour-gallery">
+                    <img src="{{ tour.photo.url }}" alt="">
+                </a>
+            </div>
+            <div class="tour__sub-imgs">
+                {% for img in tour.photos.all %}
+                <div class="tour__inner-img">
+                    <div class="tour__sub-img">
+                        <a href="{{ img.photo.url }}" data-lightbox="tour-gallery">
+                            <img src="{{ img.photo.url }}" alt="">
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+
+        <div class="tour__info-block">
+            <div class="tour__info-title">Информация о номере</div>
+            <div class="tour__schedule">
+                <div class="tour__schedule-item">
+                    <div class="tour__schedule-title">Заезд</div>
+                    <div class="tour__schedule-date">
+                        <input 
+                        type="date" 
+                        id="check_in_date" 
+                        name="check_in_date" 
+                        class="tour__schedule-date" 
+                        required 
+                    > </div>
+                </div>
+                <div class="tour__schedule-item">
+                    <div class="tour__schedule-title">Обратно</div>
+                    <div class="tour__schedule-date"> <input 
+                        type="date" 
+                        id="check_in_date" 
+                        name="check_in_date" 
+                        class="tour__schedule-date" 
+                        required>
+                    </div>
+                </div>
+            </div>
+            <div class="tour__info-item">
+                <div class="tour__info-secondary-text">
+                </div>
+            </div>
+            <div class="tour__info-item">
+                <div class="tour__info-secondary-text">
+                    <span class="icon tour__icon">
+                        <img src="{%static 'img/icons/2users.svg' %}">
+                    </span>
+                    Количество человек
+                </div>
+                <div class="tour__info-primary-text">
+                    <input type="number" id="number_of_people" name="number_of_people" value="1" class="tour__input">
+                </div>
+            </div>
+            <div class="tour__line line"></div>
+    
+            <div class="tour__info-item">
+                <div class="tour__info-secondary-text">
+                    Стоимость номера за ночь
+                </div>
+                <div class="tour__info-primary-text">
+                    {{tour.price_of_tour}}
+                </div>
+            </div>
+            {% if tour.discount %}
+            <div class="tour__info-item">
+                <div class="tour__info-secondary-text">
+                    Скидка
+                </div>
+                <div class="tour__info-secondary-text">
+                    {{tour.discount}}%
+                </div>
+            </div>
+            {% endif %}
+            <div class="tour__info-item">
+                <div class="tour__total-text">Итого</div>
+                <div class="tour__total-price">{{tour.discount_price}} сом</div>
+            </div>
+            <div class="tour__info-item">
+            </div>
+            <a 
+            id="consultation-btn" 
+            class="tour__btn" 
+            href="https://wa.me/996772317457?text=Здравствуйте, я хочу забронировать этот номер ->"
+            target="_blank">
+            Забронировать через WhatsApp!
+        </a>
+<script>
+    // Получаем текущий URL страницы
+    const currentUrl = window.location.href;
+
+    // Получаем ссылку для WhatsApp
+    const whatsappLink = document.getElementById('consultation-btn');
+
+    // Формируем сообщение с ссылкой на текущую страницу
+    const message = `Здравствуйте, я хочу забронировать этот номер -> ${currentUrl}`;
+
+    // Обновляем ссылку WhatsApp
+    whatsappLink.setAttribute('href', `https://wa.me/996772317457?text=${encodeURIComponent(message)}`);
+</script>
+</div>
+
+         <div class="tour__description">
+            <div class="tour__description-title">Описание номера</div>
+            <div class="tour__line line"></div>
+            <div class="tour__description-sub-title">За ночь можно получить </div>
+            <div class="tour__description-sub-date">вот</div>
+            <div class="tour__description-sub-text">
+                {{tour.description}}
+            </div>
+            <div class="tour__description-sub-text">
+                {{tour.description}}
+
+            </div>
+        </div>
+
+    </div>
+    
+</div>    
+</div>
+</body>
+
+{% endblock content %}

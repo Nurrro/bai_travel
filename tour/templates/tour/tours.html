@@ -1,0 +1,39 @@
+{% extends 'tour/base.html' %}
+{% load static %}
+{% block content %}
+
+<body id="body">
+<div class="container">
+    <div class="title2">
+        <span>Все номера</span>
+    </div>
+    <ul class="tour-cards__container">
+        {% for item in tour %}
+        <li class="tour-cards__item">
+            <div class="tour-cards__inner-item">
+                <div class="tour-cards__img">
+                    <a href="{% url 'tour_detail' id=item.id %}">
+                        <img src="{{ item.photo.url }}" alt="{{ item.name }}">
+                    </a>
+                </div>
+                <div class="tour-cards__block">
+                    <div class="tour-cards__name">{{ item.name }}</div>
+                    <div class="tour-cards__place">{{ item.place }}</div>
+
+                    <div class="tour-cards__price">
+                        <span class="tour-cards__new-price">{{ item.price_of_tour }} сом</span>
+                        <!-- <span class="tour-cards__old-price">{{ item.price_of_tour }}</span> -->
+                       
+                    </div>
+                    <a href="{% url 'tour_detail' id=item.id %}" class="tour-cards__btn">Подробнее</a>
+                </div>
+                <!-- {% if item.discount %}
+                <div class="tour-cards__sale">{{ item.discount }}%</div>
+                {% endif %} -->
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+{% endblock content %}

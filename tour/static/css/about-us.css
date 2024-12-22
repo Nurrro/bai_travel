@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+}
+
+.about-us__icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-us__container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.about-us__item {
+  width: 33.33%;
+  display: flex;
+  background-color: #fff;
+  padding: 20px 15px 15px;
+  border-radius: 24px;
+  border: 1px solid #cacaca;
+  margin: 10px 20px;
+}
+
+.about-us__icon {
+  display: flex;
+  padding: 10px;
+}
+
+.about-us__icon img {
+  width: 45px;
+}
+
+.about-us__block {
+  margin-left: 10px;
+}
+
+.about-us__name {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.about-us__text {
+  font-weight: light;
+  color: #8D8A8A;
+  line-height: 1.6em;
+  font-size: 12px;
+}
+
+@media (max-width: 1260px) {
+  .about-us__container {
+    flex-wrap: wrap;
+  }
+  .about-us__item {
+    margin: 5px 10px;
+  }
+}
+@media (max-width: 890px) {
+  .about-us__item {
+    width: 100%;
+  }
+}

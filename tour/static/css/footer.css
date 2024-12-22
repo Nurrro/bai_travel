@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+}
+
+.footer {
+  background-color: #000C17;
+  width: 100%;
+}
+.footer__body {
+  padding: 30px 0 10px;
+}
+.footer__list {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  flex-wrap: wrap;
+}
+.footer__item {
+  width: 33.33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer__title {
+  color: #fff;
+  margin-bottom: 20px;
+}
+.footer__link {
+  color: #8D8A8A;
+  padding: 10px 0;
+}
+.footer__link:hover {
+  text-decoration: underline;
+}
+@media (max-width: 867px) {
+  .footer__item {
+    width: 100%;
+  }
+}
