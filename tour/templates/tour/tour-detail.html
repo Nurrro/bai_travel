@@ -5,20 +5,6 @@
 
 <body id="body">
 <div class="container">
-   <div id="client-form" class="client-form" style="display: none;">
-        <form action="" id="bidsForm2" class="client-form__container" method="POST" >
-        {% csrf_token %}
-            <input type="hidden" name="tour_id" value="{{ tour.id }}">
-            <div class="client-form__close" id="closeModal"></div>
-            <div class="client-form__title">Заполните анкету</div>
-             <div class="client-form__line line"></div> 
-            <label  class="client-form__label">Введите ФИО</label>
-            <input name="full_name" type="text" class="client-form__input input">
-            <label  class="client-form__label">Введите номер телефона</label>
-            <input name="phone_number" type="text" class="client-form__input input">
-            <button id="client-form__button" class="client-form__button">Отправить</button>
-        </form> 
-    </div> 
 
 <div class="tour__container">   
 

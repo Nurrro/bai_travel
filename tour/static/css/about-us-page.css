@@ -33,6 +33,22 @@
   margin-bottom: 20px;
   border-radius: 12px;
 }
+@media (max-width: 768px) {
+  .about-us-page__img {
+    width: 25%;
+    margin-bottom: 15px;
+    border-radius: 10px;
+  }
+}
+
+/* Адаптация для мобильных устройств с экранами шириной до 480px */
+@media (max-width: 480px) {
+  .about-us-page__img {
+    width: 25%;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+}
 .about-us-page__btn {
   margin: 15px 0 10px;
   background-color: #F68712;
