@@ -13,6 +13,12 @@ def main(request):
     context = {'hottours':hot_tours, 'photos': photos, 'otzyv':otzyv, 'carusel':carusel}
     return render(request,'tour/index.html', context)
 
+def some_view(request):
+    context = {
+        'canonical_url': request.build_absolute_uri()  # Генерирует текущий URL
+    }
+    return render(request, 'some_template.html', context)
+
 def tours(request):
     tour = Tours.objects.all()
     context = {'tour':tour}
